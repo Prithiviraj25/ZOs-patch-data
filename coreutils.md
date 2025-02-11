@@ -20,7 +20,7 @@
             # GNU General Public License for more details.
             #
             # You should have received a copy of the GNU General Public License
-            # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            # along with this program.  If not, see .
 
             # As a special exception to the GNU General Public License, if you
             # distribute this file as part of a program that contains a
@@ -28,8 +28,8 @@
             # the same distribution terms that you use for the rest of that program.
 
             # This file is maintained in Automake, please report
-            # bugs to <bug-automake@gnu.org> or send patches to
-            # <automake-patches@gnu.org>.
+            # bugs to  or send patches to
+            # .
 
             # Make unconditional expansion of undefined variables an error.  This
             # helps a lot in preventing typo-related bugs.
@@ -178,7 +178,7 @@
             # GNU General Public License for more details.
             #
             # You should have received a copy of the GNU General Public License
-            # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            # along with this program.  If not, see .
 
             # As a special exception to the GNU General Public License, if you
             # distribute this file as part of a program that contains a
@@ -186,8 +186,8 @@
             # the same distribution terms that you use for the rest of that program.
 
             # This file is maintained in Automake, please report
-            # bugs to <bug-automake@gnu.org> or send patches to
-            # <automake-patches@gnu.org>.
+            # bugs to  or send patches to
+            # .
 
             # Make unconditional expansion of undefined variables an error.  This
             # helps a lot in preventing typo-related bugs.
@@ -350,7 +350,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /*-
             * Copyright (c) 1990, 1993, 1994
@@ -381,7 +381,7 @@
             * SUCH DAMAGE.
             */
 
-            #include <config.h>
+            #include 
 
             #if defined LIBC_SCCS && !defined GCC_LINT && !defined lint
             static char sccsid[] = "@(#)fts.c       8.6 (Berkeley) 8/14/94";
@@ -390,20 +390,20 @@
             #include "fts_.h"
 
             #if HAVE_SYS_PARAM_H || defined _LIBC
-            # include <sys/param.h>
+            # include 
             #endif
             #ifdef _LIBC
-            # include <include/sys/stat.h>
+            # include 
             #else
-            # include <sys/stat.h>
+            # include 
             #endif
-            #include <fcntl.h>
-            #include <errno.h>
-            #include <stddef.h>
-            #include <stdint.h>
-            #include <stdlib.h>
-            #include <string.h>
-            #include <unistd.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if ! _LIBC
             # include "attribute.h"
@@ -414,7 +414,7 @@
             # include "same-inode.h"
             #endif
 
-            #include <dirent.h>
+            #include 
             #ifndef _D_EXACT_NAMLEN
             # define _D_EXACT_NAMLEN(dirent) strlen ((dirent)->d_name)
             #endif
@@ -591,8 +591,8 @@
             #define BREAD           3               /* fts_read */
 
             #if GNULIB_FTS_DEBUG
-            # include <inttypes.h>
-            # include <stdio.h>
+            # include 
+            # include 
             bool fts_debug = false;
             # define Dprintf(x) do { if (fts_debug) printf x; } while (false)
             static void fd_ring_check (FTS const *);
@@ -936,7 +936,7 @@
 
                     if (ISSET(FTS_CWDFD))
                     {
-                        if (0 <= sp->fts_cwd_fd)
+                        if (0 fts_cwd_fd)
                         if (close (sp->fts_cwd_fd))
                             saved_errno = errno;
                     }
@@ -990,7 +990,7 @@
             #if (defined __linux__ || defined __ANDROID__) \
             && HAVE_SYS_VFS_H && HAVE_FSTATFS && HAVE_STRUCT_STATFS_F_TYPE
 
-            # include <sys/vfs.h>
+            # include 
 
             /* Linux-specific constants from coreutils' src/fs.h */
             # define S_MAGIC_AFS 0x5346414F
@@ -1128,20 +1128,20 @@
                 FALLTHROUGH;
                 case S_MAGIC_AFS:
                 /* Although AFS mount points are not counted in st_nlink, they
-                    act like directories.  See <https://bugs.debian.org/143111>.  */
+                    act like directories.  See .  */
                 FALLTHROUGH;
                 case S_MAGIC_CIFS:
                 /* Leaf optimization causes 'find' to abort.  See
-                    <https://lists.gnu.org/r/bug-gnulib/2018-04/msg00015.html>.  */
+                    .  */
                 FALLTHROUGH;
                 case S_MAGIC_NFS:
                 /* NFS provides usable dirent.d_type but not necessarily for all entries
-                    of large directories, so as per <https://bugzilla.redhat.com/1252549>
+                    of large directories, so as per 
                     NFS should return true.  However st_nlink values are not accurate on
-                    all implementations as per <https://bugzilla.redhat.com/1299169>.  */
+                    all implementations as per .  */
                 FALLTHROUGH;
                 case S_MAGIC_PROC:
-                /* Per <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=143111> /proc
+                /* Per  /proc
                     may have bogus stat.st_nlink values.  */
                 return NO_LEAF_OPTIMIZATION;
 
@@ -2145,7 +2145,7 @@
                     if (fstatat (sp->fts_cwd_fd, p->fts_accpath, sbp, flags) < 0)
                     {
                         if (follow && errno == ENOENT
-                            && 0 <= fstatat (sp->fts_cwd_fd, p->fts_accpath, sbp,
+                            && 0 fts_cwd_fd, p->fts_accpath, sbp,
                                             AT_SYMLINK_NOFOLLOW))
                         {
                             __set_errno (0);
@@ -2216,7 +2216,7 @@
                             FTSENT **a;
 
                             sp->fts_nitems = nitems + 40;
-                            if (SIZE_MAX / sizeof *a < sp->fts_nitems
+                            if (SIZE_MAX / sizeof *a fts_nitems
                                 || ! (a = realloc (sp->fts_array,
                                                 sp->fts_nitems * sizeof *a))) {
                                     free(sp->fts_array);
@@ -2301,7 +2301,7 @@
                     /*
                     * See if fts_pathlen would overflow.
                     */
-                    if (new_len < sp->fts_pathlen) {
+                    if (new_len fts_pathlen) {
                             free(sp->fts_path);
                             sp->fts_path = NULL;
                             __set_errno (ENAMETOOLONG);
@@ -2477,7 +2477,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /*-
             * Copyright (c) 1990, 1993, 1994
@@ -2508,7 +2508,7 @@
             * SUCH DAMAGE.
             */
 
-            #include <config.h>
+            #include 
 
             #if defined LIBC_SCCS && !defined GCC_LINT && !defined lint
             static char sccsid[] = "@(#)fts.c       8.6 (Berkeley) 8/14/94";
@@ -2517,20 +2517,20 @@
             #include "fts_.h"
 
             #if HAVE_SYS_PARAM_H || defined _LIBC
-            # include <sys/param.h>
+            # include 
             #endif
             #ifdef _LIBC
-            # include <include/sys/stat.h>
+            # include 
             #else
-            # include <sys/stat.h>
+            # include 
             #endif
-            #include <fcntl.h>
-            #include <errno.h>
-            #include <stddef.h>
-            #include <stdint.h>
-            #include <stdlib.h>
-            #include <string.h>
-            #include <unistd.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if ! _LIBC
             # include "attribute.h"
@@ -2541,7 +2541,7 @@
             # include "same-inode.h"
             #endif
 
-            #include <dirent.h>
+            #include 
             #ifndef _D_EXACT_NAMLEN
             # define _D_EXACT_NAMLEN(dirent) strlen ((dirent)->d_name)
             #endif
@@ -2718,8 +2718,8 @@
             #define BREAD           3               /* fts_read */
 
             #if GNULIB_FTS_DEBUG
-            # include <inttypes.h>
-            # include <stdio.h>
+            # include 
+            # include 
             bool fts_debug = false;
             # define Dprintf(x) do { if (fts_debug) printf x; } while (false)
             static void fd_ring_check (FTS const *);
@@ -3063,7 +3063,7 @@
 
                     if (ISSET(FTS_CWDFD))
                     {
-                        if (0 <= sp->fts_cwd_fd)
+                        if (0 fts_cwd_fd)
                         if (close (sp->fts_cwd_fd))
                             saved_errno = errno;
                     }
@@ -3117,7 +3117,7 @@
             #if (defined __linux__ || defined __ANDROID__) \
             && HAVE_SYS_VFS_H && HAVE_FSTATFS && HAVE_STRUCT_STATFS_F_TYPE
 
-            # include <sys/vfs.h>
+            # include 
 
             /* Linux-specific constants from coreutils' src/fs.h */
             # define S_MAGIC_AFS 0x5346414F
@@ -3255,20 +3255,20 @@
                 FALLTHROUGH;
                 case S_MAGIC_AFS:
                 /* Although AFS mount points are not counted in st_nlink, they
-                    act like directories.  See <https://bugs.debian.org/143111>.  */
+                    act like directories.  See .  */
                 FALLTHROUGH;
                 case S_MAGIC_CIFS:
                 /* Leaf optimization causes 'find' to abort.  See
-                    <https://lists.gnu.org/r/bug-gnulib/2018-04/msg00015.html>.  */
+                    .  */
                 FALLTHROUGH;
                 case S_MAGIC_NFS:
                 /* NFS provides usable dirent.d_type but not necessarily for all entries
-                    of large directories, so as per <https://bugzilla.redhat.com/1252549>
+                    of large directories, so as per 
                     NFS should return true.  However st_nlink values are not accurate on
-                    all implementations as per <https://bugzilla.redhat.com/1299169>.  */
+                    all implementations as per .  */
                 FALLTHROUGH;
                 case S_MAGIC_PROC:
-                /* Per <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=143111> /proc
+                /* Per  /proc
                     may have bogus stat.st_nlink values.  */
                 return NO_LEAF_OPTIMIZATION;
 
@@ -4275,7 +4275,7 @@
                     if (fstatat (sp->fts_cwd_fd, p->fts_accpath, sbp, flags) < 0)
                     {
                         if (follow && errno == ENOENT
-                            && 0 <= fstatat (sp->fts_cwd_fd, p->fts_accpath, sbp,
+                            && 0 fts_cwd_fd, p->fts_accpath, sbp,
                                             AT_SYMLINK_NOFOLLOW))
                         {
                             __set_errno (0);
@@ -4346,7 +4346,7 @@
                             FTSENT **a;
 
                             sp->fts_nitems = nitems + 40;
-                            if (SIZE_MAX / sizeof *a < sp->fts_nitems
+                            if (SIZE_MAX / sizeof *a fts_nitems
                                 || ! (a = realloc (sp->fts_array,
                                                 sp->fts_nitems * sizeof *a))) {
                                     free(sp->fts_array);
@@ -4431,7 +4431,7 @@
                     /*
                     * See if fts_pathlen would overflow.
                     */
-                    if (new_len < sp->fts_pathlen) {
+                    if (new_len fts_pathlen) {
                             free(sp->fts_path);
                             sp->fts_path = NULL;
                             __set_errno (ENAMETOOLONG);
@@ -4627,47 +4627,47 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            #include <config.h>
+            #include 
 
             /* Specification.  Also get __argv declaration.  */
-            #include <stdlib.h>
+            #include 
 
-            #include <errno.h> /* get program_invocation_name declaration */
+            #include  /* get program_invocation_name declaration */
 
             #ifdef _AIX
-            # include <unistd.h>
-            # include <procinfo.h>
-            # include <string.h>
+            # include 
+            # include 
+            # include 
             #endif
 
             #ifdef __MVS__
             # ifndef _OPEN_SYS
             #  define _OPEN_SYS
             # endif
-            # include <string.h>
-            # include <sys/ps.h>
+            # include 
+            # include 
             #endif
 
             #ifdef __hpux
-            # include <unistd.h>
-            # include <sys/param.h>
-            # include <sys/pstat.h>
-            # include <string.h>
+            # include 
+            # include 
+            # include 
+            # include 
             #endif
 
             #if defined __sgi || defined __osf__
-            # include <string.h>
-            # include <unistd.h>
-            # include <stdio.h>
-            # include <fcntl.h>
-            # include <sys/procfs.h>
+            # include 
+            # include 
+            # include 
+            # include 
+            # include 
             #endif
 
             #if defined __SCO_VERSION__ || defined __sysv5__
-            # include <fcntl.h>
-            # include <string.h>
+            # include 
+            # include 
             #endif
 
             #include "basename-lgpl.h"
@@ -4944,47 +4944,47 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            #include <config.h>
+            #include 
 
             /* Specification.  Also get __argv declaration.  */
-            #include <stdlib.h>
+            #include 
 
-            #include <errno.h> /* get program_invocation_name declaration */
+            #include  /* get program_invocation_name declaration */
 
             #ifdef _AIX
-            # include <unistd.h>
-            # include <procinfo.h>
-            # include <string.h>
+            # include 
+            # include 
+            # include 
             #endif
 
             #ifdef __MVS__
             # ifndef _OPEN_SYS
             #  define _OPEN_SYS
             # endif
-            # include <string.h>
-            # include <sys/ps.h>
+            # include 
+            # include 
             #endif
 
             #ifdef __hpux
-            # include <unistd.h>
-            # include <sys/param.h>
-            # include <sys/pstat.h>
-            # include <string.h>
+            # include 
+            # include 
+            # include 
+            # include 
             #endif
 
             #if defined __sgi || defined __osf__
-            # include <string.h>
-            # include <unistd.h>
-            # include <stdio.h>
-            # include <fcntl.h>
-            # include <sys/procfs.h>
+            # include 
+            # include 
+            # include 
+            # include 
+            # include 
             #endif
 
             #if defined __SCO_VERSION__ || defined __sysv5__
-            # include <fcntl.h>
-            # include <string.h>
+            # include 
+            # include 
             #endif
 
             #include "basename-lgpl.h"
@@ -5275,46 +5275,46 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Written by Glen Lenker and Bruno Haible.  */
 
-            #include <config.h>
+            #include 
             #include "nproc.h"
 
-            #include <limits.h>
-            #include <stdlib.h>
-            #include <unistd.h>
+            #include 
+            #include 
+            #include 
 
             #if HAVE_PTHREAD_GETAFFINITY_NP && 0
-            # include <pthread.h>
-            # include <sched.h>
+            # include 
+            # include 
             #endif
             #if HAVE_SCHED_GETAFFINITY_LIKE_GLIBC || HAVE_SCHED_GETAFFINITY_NP
-            # include <sched.h>
+            # include 
             #endif
 
-            #include <sys/types.h>
+            #include 
 
             #if HAVE_SYS_PSTAT_H
-            # include <sys/pstat.h>
+            # include 
             #endif
 
             #if HAVE_SYS_SYSMP_H
-            # include <sys/sysmp.h>
+            # include 
             #endif
 
             #if HAVE_SYS_PARAM_H
-            # include <sys/param.h>
+            # include 
             #endif
 
             #if HAVE_SYS_SYSCTL_H && !(defined __GLIBC__ && defined __linux__)
-            # include <sys/sysctl.h>
+            # include 
             #endif
 
             #if defined _WIN32 && ! defined __CYGWIN__
             # define WIN32_LEAN_AND_MEAN
-            # include <windows.h>
+            # include 
             #endif
 
             #include "c-ctype.h"
@@ -5479,7 +5479,7 @@
                 the /sys and /proc file systems (see
                 glibc/sysdeps/unix/sysv/linux/getsysstats.c).
                 In some situations these file systems are not mounted, and the sysconf call
-                returns 1 or 2 (<https://sourceware.org/bugzilla/show_bug.cgi?id=21542>),
+                returns 1 or 2 (),
                 which does not reflect the reality.  */
 
             if (query == NPROC_CURRENT)
@@ -5684,46 +5684,46 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Written by Glen Lenker and Bruno Haible.  */
 
-            #include <config.h>
+            #include 
             #include "nproc.h"
 
-            #include <limits.h>
-            #include <stdlib.h>
-            #include <unistd.h>
+            #include 
+            #include 
+            #include 
 
             #if HAVE_PTHREAD_GETAFFINITY_NP && 0
-            # include <pthread.h>
-            # include <sched.h>
+            # include 
+            # include 
             #endif
             #if HAVE_SCHED_GETAFFINITY_LIKE_GLIBC || HAVE_SCHED_GETAFFINITY_NP
-            # include <sched.h>
+            # include 
             #endif
 
-            #include <sys/types.h>
+            #include 
 
             #if HAVE_SYS_PSTAT_H
-            # include <sys/pstat.h>
+            # include 
             #endif
 
             #if HAVE_SYS_SYSMP_H
-            # include <sys/sysmp.h>
+            # include 
             #endif
 
             #if HAVE_SYS_PARAM_H
-            # include <sys/param.h>
+            # include 
             #endif
 
             #if HAVE_SYS_SYSCTL_H && !(defined __GLIBC__ && defined __linux__)
-            # include <sys/sysctl.h>
+            # include 
             #endif
 
             #if defined _WIN32 && ! defined __CYGWIN__
             # define WIN32_LEAN_AND_MEAN
-            # include <windows.h>
+            # include 
             #endif
 
             #include "c-ctype.h"
@@ -5888,7 +5888,7 @@
                 the /sys and /proc file systems (see
                 glibc/sysdeps/unix/sysv/linux/getsysstats.c).
                 In some situations these file systems are not mounted, and the sysconf call
-                returns 1 or 2 (<https://sourceware.org/bugzilla/show_bug.cgi?id=21542>),
+                returns 1 or 2 (),
                 which does not reflect the reality.  */
 
             if (query == NPROC_CURRENT)
@@ -6114,15 +6114,15 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+            along with this program.  If not, see . */
 
-            /* Written by Simon Josefsson <simon@josefsson.org>.  */
+            /* Written by Simon Josefsson .  */
 
-            #include <config.h>
+            #include 
 
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
             #include "system.h"
             #include "assure.h"
@@ -6899,14 +6899,14 @@
             40 - 49:  E F G H I J K L M N
             50 - 59:  O P Q R S T U V W X
             60 - 69:  Y Z . - : + = ^ ! /   #dummy comment to workaround syntax-check
-            70 - 79:  * ? & < > ( ) [ ] {
+            70 - 79:  * ? &  ( ) [ ] {
             80 - 84:  } @ % $ #
             */
             static signed char const z85_decoding[93] = {
             68, -1,  84,  83, 82,  72, -1,               /* ! " # $ % & ' */
             75, 76,  70,  65, -1,  63, 62, 69,           /* ( ) * + , - . / */
             0,  1,   2,   3,  4,   5,  6,   7,  8,  9,   /* '0' to '9' */
-            64, -1,  73,  66, 74,  71, 81,               /* : ; < =  > ? @ */
+            64, -1,  73,  66, 74,  71, 81,               /* : ;  ? @ */
             36, 37,  38,  39, 40,  41, 42,  43, 44, 45,  /* 'A' to 'J' */
             46, 47,  48,  49, 50,  51, 52,  53, 54, 55,  /* 'K' to 'T' */
             56, 57,  58,  59, 60,  61,                   /* 'U' to 'Z' */
@@ -7077,7 +7077,7 @@
                     return false;
 
                 bool bit = (*in == '1');
-                ctx->ctx.base2.octet |= bit << ctx->i;
+                ctx->ctx.base2.octet |= bit i;
                 ++ctx->i;
 
                 if (ctx->i == 8)
@@ -7124,7 +7124,7 @@
                 if (ctx->i == 0)
                     ctx->i = 8;
                 --ctx->i;
-                ctx->ctx.base2.octet |= bit << ctx->i;
+                ctx->ctx.base2.octet |= bit i;
 
                 if (ctx->i == 0)
                     {
@@ -7515,15 +7515,15 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+            along with this program.  If not, see . */
 
-            /* Written by Simon Josefsson <simon@josefsson.org>.  */
+            /* Written by Simon Josefsson .  */
 
-            #include <config.h>
+            #include 
 
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
             #include "system.h"
             #include "assure.h"
@@ -8300,14 +8300,14 @@
             40 - 49:  E F G H I J K L M N
             50 - 59:  O P Q R S T U V W X
             60 - 69:  Y Z . - : + = ^ ! /   #dummy comment to workaround syntax-check
-            70 - 79:  * ? & < > ( ) [ ] {
+            70 - 79:  * ? &  ( ) [ ] {
             80 - 84:  } @ % $ #
             */
             static signed char const z85_decoding[93] = {
             68, -1,  84,  83, 82,  72, -1,               /* ! " # $ % & ' */
             75, 76,  70,  65, -1,  63, 62, 69,           /* ( ) * + , - . / */
             0,  1,   2,   3,  4,   5,  6,   7,  8,  9,   /* '0' to '9' */
-            64, -1,  73,  66, 74,  71, 81,               /* : ; < =  > ? @ */
+            64, -1,  73,  66, 74,  71, 81,               /* : ;  ? @ */
             36, 37,  38,  39, 40,  41, 42,  43, 44, 45,  /* 'A' to 'J' */
             46, 47,  48,  49, 50,  51, 52,  53, 54, 55,  /* 'K' to 'T' */
             56, 57,  58,  59, 60,  61,                   /* 'U' to 'Z' */
@@ -8478,7 +8478,7 @@
                     return false;
 
                 bool bit = (*in == '1');
-                ctx->ctx.base2.octet |= bit << ctx->i;
+                ctx->ctx.base2.octet |= bit i;
                 ++ctx->i;
 
                 if (ctx->i == 8)
@@ -8525,7 +8525,7 @@
                 if (ctx->i == 0)
                     ctx->i = 8;
                 --ctx->i;
-                ctx->ctx.base2.octet |= bit << ctx->i;
+                ctx->ctx.base2.octet |= bit i;
 
                 if (ctx->i == 0)
                     {
@@ -8937,7 +8937,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Differences from the Unix cat:
             * Always unbuffered, -u is ignored.
@@ -8946,16 +8946,16 @@
 
             By tege@sics.se, Torbjörn Granlund, advised by rms, Richard Stallman.  */
 
-            #include <config.h>
+            #include 
 
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
             #if HAVE_STROPTS_H
-            # include <stropts.h>
+            # include 
             #endif
-            #include <sys/ioctl.h>
+            #include 
 
             #include "system.h"
             #include "alignalloc.h"
@@ -9744,7 +9744,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Differences from the Unix cat:
             * Always unbuffered, -u is ignored.
@@ -9753,16 +9753,16 @@
 
             By tege@sics.se, Torbjörn Granlund, advised by rms, Richard Stallman.  */
 
-            #include <config.h>
+            #include 
 
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
             #if HAVE_STROPTS_H
-            # include <stropts.h>
+            # include 
             #endif
-            #include <sys/ioctl.h>
+            #include 
 
             #include "system.h"
             #include "alignalloc.h"
@@ -10266,9 +10266,9 @@
             #ifdef __MVS__
             #define MVS_CAT "/bin/cat"
             #define MVS_CAT_LEN (sizeof(MVS_CAT)-1)
-            #include <unistd.h>
-            #include <sys/types.h>
-            #include <sys/wait.h>
+            #include 
+            #include 
+            #include 
             static bool
             do_mvs_cat (int argc, char **argv)
             {
@@ -10588,9 +10588,9 @@
             +#ifdef __MVS__
             +#define MVS_CAT "/bin/cat"
             +#define MVS_CAT_LEN (sizeof(MVS_CAT)-1)
-            +#include <unistd.h>
-            +#include <sys/types.h>
-            +#include <sys/wait.h>
+            +#include 
+            +#include 
+            +#include 
             +static bool
             +do_mvs_cat (int argc, char **argv)
             +{
@@ -10657,21 +10657,21 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Extracted from cp.c and librarified by Jim Meyering.  */
 
-            #include <config.h>
-            #include <stdio.h>
-            #include <sys/ioctl.h>
-            #include <sys/types.h>
-            #include <selinux/selinux.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if HAVE_HURD_H
-            # include <hurd.h>
+            # include 
             #endif
             #if HAVE_PRIV_H
-            # include <priv.h>
+            # include 
             #endif
 
             #include "system.h"
@@ -10713,19 +10713,19 @@
             #endif
 
             #if USE_XATTR
-            # include <attr/error_context.h>
-            # include <attr/libattr.h>
-            # include <stdarg.h>
+            # include 
+            # include 
+            # include 
             # include "verror.h"
             #endif
 
             #if HAVE_LINUX_FALLOC_H
-            # include <linux/falloc.h>
+            # include 
             #endif
 
             /* See HAVE_FALLOCATE workaround when including this file.  */
             #ifdef HAVE_LINUX_FS_H
-            # include <linux/fs.h>
+            # include 
             #endif
 
             #if !defined FICLONE && defined __linux__
@@ -10733,7 +10733,7 @@
             #endif
 
             #if HAVE_FCLONEFILEAT && !USE_XATTR
-            # include <sys/clonefile.h>
+            # include 
             #endif
 
             #ifndef USE_ACL
@@ -10863,7 +10863,7 @@
                     else
                         stdin_rdev_status = -1;
                     }
-                if (0 < stdin_rdev_status && major (stdin_rdev) == major (st->st_rdev))
+                if (0 st_rdev))
                     result = fstat (minor (st->st_rdev), st);
                 }
 
@@ -10878,7 +10878,7 @@
             punch_hole (int fd, off_t offset, off_t length)
             {
             int ret = 0;
-            /* +0 is to work around older <linux/fs.h> defining HAVE_FALLOCATE to empty.  */
+            /* +0 is to work around older  defining HAVE_FALLOCATE to empty.  */
             #if HAVE_FALLOCATE + 0
             # if defined FALLOC_FL_PUNCH_HOLE && defined FALLOC_FL_KEEP_SIZE
             ret = fallocate (fd, FALLOC_FL_PUNCH_HOLE | FALLOC_FL_KEEP_SIZE,
@@ -11778,7 +11778,7 @@
                 suggests the file is sparse.  */
             if (! (HAVE_STRUCT_STAT_ST_BLOCKS
                     && S_ISREG (sb->st_mode)
-                    && STP_NBLOCKS (sb) < sb->st_size / ST_NBLOCKSIZE))
+                    && STP_NBLOCKS (sb) st_size / ST_NBLOCKSIZE))
                 return PLAIN_SCANTYPE;
 
             #ifdef SEEK_HOLE
@@ -11796,7 +11796,7 @@
             }
 
             #if HAVE_FCLONEFILEAT && !USE_XATTR
-            # include <sys/acl.h>
+            # include 
             /* Return true if FD has a nontrivial ACL.  */
             static bool
             fd_has_acl (int fd)
@@ -12108,7 +12108,7 @@
                     call open again, but without O_EXCL (potentially dangerous).
                     If not, fail with a diagnostic.  These shenanigans are necessary
                     only when copying, i.e., not in move_mode.  */
-                if (dest_desc < 0 && dest_errno == EEXIST && ! x->move_mode)
+                if (dest_desc move_mode)
                     {
                     char dummy[1];
                     if (0 <= readlinkat (dst_dirfd, dst_relname, dummy, sizeof dummy))
@@ -12527,7 +12527,7 @@
                 /* It's not ok if they're distinct hard links to the same file as
                     this causes a race condition and we may lose data in this case.  */
                 if (same_link
-                    && 1 < dst_sb_link->st_nlink
+                    && 1 st_nlink
                     && ! same_nameat (AT_FDCWD, src_name, dst_dirfd, dst_relname))
                     return ! x->move_mode;
                 }
@@ -12569,7 +12569,7 @@
                 this must succeed: mv s l */
             if (x->move_mode
                 && S_ISLNK (src_sb->st_mode)
-                && 1 < dst_sb_link->st_nlink)
+                && 1 st_nlink)
                 {
                 char *abs_src = canonicalize_file_name (src_name);
                 if (abs_src)
@@ -13372,7 +13372,7 @@
                     {
                     if (x->verbose)
                         emit_verbose (x->exchange
-                                    ? _("exchanged %s <-> %s")
+                                    ? _("exchanged %s  %s")
                                     : _("renamed %s -> %s"),
                                     src_name, dst_name, dst_backup);
 
@@ -13436,7 +13436,7 @@
                     the diagnostic and parenthesized integer, and include that in your
                     e-mail.  One way to do that is to run a command like this
                     find /usr/include/. -type f \
-                        | xargs grep 'define.*\<E[A-Z]*\>.*\<18\>' /dev/null
+                        | xargs grep 'define.*\.*\' /dev/null
                     where you'd replace '18' with the integer in parentheses that
                     was output from the perl one-liner above.
                     If necessary, of course, change '/tmp' to some other directory.  */
@@ -13756,7 +13756,7 @@
 
                 int symlink_err = force_symlinkat (src_link_val, dst_dirfd, dst_relname,
                                                     x->unlink_dest_after_failed_open, -1);
-                if (0 < symlink_err && x->update && !new_dst && S_ISLNK (dst_sb.st_mode)
+                if (0 update && !new_dst && S_ISLNK (dst_sb.st_mode)
                     && dst_sb.st_size == strlen (src_link_val))
                     {
                     /* See if the destination is already the desired symlink.
@@ -14075,7 +14075,7 @@
                 or if the target system doesn't support file ownership.
 
                 Treat EACCES like EPERM and EINVAL to work around a bug in Linux
-                CIFS <https://bugs.gnu.org/65599>.  Although this means coreutils
+                CIFS .  Although this means coreutils
                 will ignore EACCES errors that it should report, problems should
                 occur only when some other process is racing with coreutils and
                 coreutils is not immune to races anyway.  */
@@ -14131,21 +14131,21 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Extracted from cp.c and librarified by Jim Meyering.  */
 
-            #include <config.h>
-            #include <stdio.h>
-            #include <sys/ioctl.h>
-            #include <sys/types.h>
-            #include <selinux/selinux.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if HAVE_HURD_H
-            # include <hurd.h>
+            # include 
             #endif
             #if HAVE_PRIV_H
-            # include <priv.h>
+            # include 
             #endif
 
             #include "system.h"
@@ -14187,19 +14187,19 @@
             #endif
 
             #if USE_XATTR
-            # include <attr/error_context.h>
-            # include <attr/libattr.h>
-            # include <stdarg.h>
+            # include 
+            # include 
+            # include 
             # include "verror.h"
             #endif
 
             #if HAVE_LINUX_FALLOC_H
-            # include <linux/falloc.h>
+            # include 
             #endif
 
             /* See HAVE_FALLOCATE workaround when including this file.  */
             #ifdef HAVE_LINUX_FS_H
-            # include <linux/fs.h>
+            # include 
             #endif
 
             #if !defined FICLONE && defined __linux__
@@ -14207,7 +14207,7 @@
             #endif
 
             #if HAVE_FCLONEFILEAT && !USE_XATTR
-            # include <sys/clonefile.h>
+            # include 
             #endif
 
             #ifndef USE_ACL
@@ -14341,7 +14341,7 @@
                     else
                         stdin_rdev_status = -1;
                     }
-                if (0 < stdin_rdev_status && major (stdin_rdev) == major (st->st_rdev))
+                if (0 st_rdev))
                     result = fstat (minor (st->st_rdev), st);
                 }
 
@@ -14356,7 +14356,7 @@
             punch_hole (int fd, off_t offset, off_t length)
             {
             int ret = 0;
-            /* +0 is to work around older <linux/fs.h> defining HAVE_FALLOCATE to empty.  */
+            /* +0 is to work around older  defining HAVE_FALLOCATE to empty.  */
             #if HAVE_FALLOCATE + 0
             # if defined FALLOC_FL_PUNCH_HOLE && defined FALLOC_FL_KEEP_SIZE
             ret = fallocate (fd, FALLOC_FL_PUNCH_HOLE | FALLOC_FL_KEEP_SIZE,
@@ -15256,7 +15256,7 @@
                 suggests the file is sparse.  */
             if (! (HAVE_STRUCT_STAT_ST_BLOCKS
                     && S_ISREG (sb->st_mode)
-                    && STP_NBLOCKS (sb) < sb->st_size / ST_NBLOCKSIZE))
+                    && STP_NBLOCKS (sb) st_size / ST_NBLOCKSIZE))
                 return PLAIN_SCANTYPE;
 
             #ifdef SEEK_HOLE
@@ -15274,7 +15274,7 @@
             }
 
             #if HAVE_FCLONEFILEAT && !USE_XATTR
-            # include <sys/acl.h>
+            # include 
             /* Return true if FD has a nontrivial ACL.  */
             static bool
             fd_has_acl (int fd)
@@ -15586,7 +15586,7 @@
                     call open again, but without O_EXCL (potentially dangerous).
                     If not, fail with a diagnostic.  These shenanigans are necessary
                     only when copying, i.e., not in move_mode.  */
-                if (dest_desc < 0 && dest_errno == EEXIST && ! x->move_mode)
+                if (dest_desc move_mode)
                     {
                     char dummy[1];
                     if (0 <= readlinkat (dst_dirfd, dst_relname, dummy, sizeof dummy))
@@ -15628,7 +15628,7 @@
 
             #ifdef __MVS__
             /* Copy MVS file tags */
-            __setfdccsid(dest_desc,  (src_sb->st_tag.ft_txtflag << 16) | src_sb->st_tag.ft_ccsid);
+            __setfdccsid(dest_desc,  (src_sb->st_tag.ft_txtflag st_tag.ft_ccsid);
             #endif
 
             /* --attributes-only overrides --reflink.  */
@@ -16010,7 +16010,7 @@
                 /* It's not ok if they're distinct hard links to the same file as
                     this causes a race condition and we may lose data in this case.  */
                 if (same_link
-                    && 1 < dst_sb_link->st_nlink
+                    && 1 st_nlink
                     && ! same_nameat (AT_FDCWD, src_name, dst_dirfd, dst_relname))
                     return ! x->move_mode;
                 }
@@ -16052,7 +16052,7 @@
                 this must succeed: mv s l */
             if (x->move_mode
                 && S_ISLNK (src_sb->st_mode)
-                && 1 < dst_sb_link->st_nlink)
+                && 1 st_nlink)
                 {
                 char *abs_src = canonicalize_file_name (src_name);
                 if (abs_src)
@@ -16855,7 +16855,7 @@
                     {
                     if (x->verbose)
                         emit_verbose (x->exchange
-                                    ? _("exchanged %s <-> %s")
+                                    ? _("exchanged %s  %s")
                                     : _("renamed %s -> %s"),
                                     src_name, dst_name, dst_backup);
 
@@ -16919,7 +16919,7 @@
                     the diagnostic and parenthesized integer, and include that in your
                     e-mail.  One way to do that is to run a command like this
                     find /usr/include/. -type f \
-                        | xargs grep 'define.*\<E[A-Z]*\>.*\<18\>' /dev/null
+                        | xargs grep 'define.*\.*\' /dev/null
                     where you'd replace '18' with the integer in parentheses that
                     was output from the perl one-liner above.
                     If necessary, of course, change '/tmp' to some other directory.  */
@@ -17239,7 +17239,7 @@
 
                 int symlink_err = force_symlinkat (src_link_val, dst_dirfd, dst_relname,
                                                     x->unlink_dest_after_failed_open, -1);
-                if (0 < symlink_err && x->update && !new_dst && S_ISLNK (dst_sb.st_mode)
+                if (0 update && !new_dst && S_ISLNK (dst_sb.st_mode)
                     && dst_sb.st_size == strlen (src_link_val))
                     {
                     /* See if the destination is already the desired symlink.
@@ -17558,7 +17558,7 @@
                 or if the target system doesn't support file ownership.
 
                 Treat EACCES like EPERM and EINVAL to work around a bug in Linux
-                CIFS <https://bugs.gnu.org/65599>.  Although this means coreutils
+                CIFS .  Although this means coreutils
                 will ignore EACCES errors that it should report, problems should
                 occur only when some other process is racing with coreutils and
                 coreutils is not immune to races anyway.  */
@@ -17619,7 +17619,7 @@
             
             +#ifdef __MVS__
             +/* Copy MVS file tags */
-            +  __setfdccsid(dest_desc,  (src_sb->st_tag.ft_txtflag << 16) | src_sb->st_tag.ft_ccsid);
+            +  __setfdccsid(dest_desc,  (src_sb->st_tag.ft_txtflag st_tag.ft_ccsid);
             +#endif
             +
             /* --attributes-only overrides --reflink.  */
@@ -17645,15 +17645,15 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            along with this program.  If not, see .
 
             Written by Torbjörn Granlund, David MacKenzie, and Jim Meyering. */
 
-            #include <config.h>
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <getopt.h>
-            #include <selinux/label.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #include "system.h"
             #include "argmatch.h"
@@ -18961,15 +18961,15 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            along with this program.  If not, see .
 
             Written by Torbjörn Granlund, David MacKenzie, and Jim Meyering. */
 
-            #include <config.h>
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <getopt.h>
-            #include <selinux/label.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #include "system.h"
             #include "argmatch.h"
@@ -19559,9 +19559,9 @@
             #ifdef __MVS__
             #define MVS_COPY "/bin/cp"
             #define MVS_COPY_LEN (sizeof(MVS_COPY)-1)
-            #include <unistd.h>
-            #include <sys/types.h>
-            #include <sys/wait.h>
+            #include 
+            #include 
+            #include 
             static bool
             do_mvs_copy (int argc, char **argv)
             {
@@ -20311,9 +20311,9 @@
             +#ifdef __MVS__
             +#define MVS_COPY "/bin/cp"
             +#define MVS_COPY_LEN (sizeof(MVS_COPY)-1)
-            +#include <unistd.h>
-            +#include <sys/types.h>
-            +#include <sys/wait.h>
+            +#include 
+            +#include 
+            +#include 
             +static bool
             +do_mvs_copy (int argc, char **argv)
             +{
@@ -20381,14 +20381,14 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            /* Written by Ulrich Drepper <drepper@gnu.ai.mit.edu>.  */
+            /* Written by Ulrich Drepper .  */
 
-            #include <config.h>
+            #include 
 
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
 
             #include "system.h"
             #include "argmatch.h"
@@ -22020,14 +22020,14 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            /* Written by Ulrich Drepper <drepper@gnu.ai.mit.edu>.  */
+            /* Written by Ulrich Drepper .  */
 
-            #include <config.h>
+            #include 
 
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
 
             #include "system.h"
             #include "argmatch.h"
@@ -23729,7 +23729,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* If ls_mode is LS_MULTI_COL,
             the multi-column format is the default regardless
@@ -23748,35 +23748,35 @@
 
             /* Written by Richard Stallman and David MacKenzie.  */
 
-            /* Color support by Peter Anvin <Peter.Anvin@linux.org> and Dennis
-            Flaherty <dennisf@denix.elk.miles.com> based on original patches by
-            Greg Lee <lee@uhunix.uhcc.hawaii.edu>.  */
+            /* Color support by Peter Anvin  and Dennis
+            Flaherty  based on original patches by
+            Greg Lee .  */
 
-            #include <config.h>
-            #include <ctype.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
-            #include <termios.h>
+            #include 
             #if HAVE_STROPTS_H
-            # include <stropts.h>
+            # include 
             #endif
-            #include <sys/ioctl.h>
+            #include 
 
             #ifdef WINSIZE_IN_PTEM
-            # include <sys/stream.h>
-            # include <sys/ptem.h>
+            # include 
+            # include 
             #endif
 
-            #include <stdio.h>
-            #include <setjmp.h>
-            #include <pwd.h>
-            #include <getopt.h>
-            #include <signal.h>
-            #include <selinux/selinux.h>
-            #include <uchar.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if HAVE_LANGINFO_CODESET
-            # include <langinfo.h>
+            # include 
             #endif
 
             /* Use SA_NOCLDSTOP as a proxy for whether the sigaction machinery is
@@ -23799,7 +23799,7 @@
             #endif
 
             #include "system.h"
-            #include <fnmatch.h>
+            #include 
 
             #include "acl.h"
             #include "argmatch.h"
@@ -23832,11 +23832,11 @@
             #include "canonicalize.h"
             #include "statx.h"
 
-            /* Include <sys/capability.h> last to avoid a clash of <sys/types.h>
+            /* Include  last to avoid a clash of 
             include guards with some premature versions of libcap.
-            For more details, see <https://bugzilla.redhat.com/483548>.  */
+            For more details, see .  */
             #ifdef HAVE_CAP
-            # include <sys/capability.h>
+            # include 
             #endif
 
             #define PROGRAM_NAME (ls_mode == LS_LS ? "ls" \
@@ -25508,7 +25508,7 @@
                 if (pending_dirs)
                     dired_outbyte ('\n');
                 }
-            else if (n_files <= 1 && pending_dirs && pending_dirs->next == 0)
+            else if (n_files next == 0)
                 print_dir_name = false;
 
             while (pending_dirs)
@@ -26331,7 +26331,7 @@
                     break;
 
                     case ST_OCTAL:      /* Octal sequence */
-                    if (*p < '0' || *p > '7')
+                    if (*p  '7')
                         {
                         *(q++) = num;
                         ++count;
@@ -26594,7 +26594,7 @@
 
                     for (e2 = e1->next; e2 != nullptr; e2 = e2->next)
                         {
-                        if (e2->ext.len < SIZE_MAX && e1->ext.len == e2->ext.len)
+                        if (e2->ext.len ext.len == e2->ext.len)
                             {
                             if (memcmp (e1->ext.string, e2->ext.string, e1->ext.len) == 0)
                                 e2->ext.len = SIZE_MAX; /* Ignore */
@@ -28299,7 +28299,7 @@
                             case '+': case ',': case '-': case '.': case '/':
                             case '0': case '1': case '2': case '3': case '4':
                             case '5': case '6': case '7': case '8': case '9':
-                            case ':': case ';': case '<': case '=': case '>':
+                            case ':': case ';': case '':
                             case '?':
                             case 'A': case 'B': case 'C': case 'D': case 'E':
                             case 'F': case 'G': case 'H': case 'I': case 'J':
@@ -28731,7 +28731,7 @@
                         type = C_CAP;
                     else if ((mode & S_IXUGO) != 0 && is_colored (C_EXEC))
                         type = C_EXEC;
-                    else if ((1 < f->stat.st_nlink) && is_colored (C_MULTIHARDLINK))
+                    else if ((1 stat.st_nlink) && is_colored (C_MULTIHARDLINK))
                         type = C_MULTIHARDLINK;
                     }
                 else if (S_ISDIR (mode))
@@ -29346,7 +29346,7 @@
                 fputs (_("\
             \n\
             The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.\n\
-            FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,\n\
+            FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1FORMAT2,\n\
             then FORMAT1 applies to non-recent files and FORMAT2 to recent files.\n\
             TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.\n\
             Also the TIME_STYLE environment variable sets the default style to use.\n\
@@ -29392,7 +29392,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* If ls_mode is LS_MULTI_COL,
             the multi-column format is the default regardless
@@ -29411,35 +29411,35 @@
 
             /* Written by Richard Stallman and David MacKenzie.  */
 
-            /* Color support by Peter Anvin <Peter.Anvin@linux.org> and Dennis
-            Flaherty <dennisf@denix.elk.miles.com> based on original patches by
-            Greg Lee <lee@uhunix.uhcc.hawaii.edu>.  */
+            /* Color support by Peter Anvin  and Dennis
+            Flaherty  based on original patches by
+            Greg Lee .  */
 
-            #include <config.h>
-            #include <ctype.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
 
-            #include <termios.h>
+            #include 
             #if HAVE_STROPTS_H
-            # include <stropts.h>
+            # include 
             #endif
-            #include <sys/ioctl.h>
+            #include 
 
             #ifdef WINSIZE_IN_PTEM
-            # include <sys/stream.h>
-            # include <sys/ptem.h>
+            # include 
+            # include 
             #endif
 
-            #include <stdio.h>
-            #include <setjmp.h>
-            #include <pwd.h>
-            #include <getopt.h>
-            #include <signal.h>
-            #include <selinux/selinux.h>
-            #include <uchar.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
             #if HAVE_LANGINFO_CODESET
-            # include <langinfo.h>
+            # include 
             #endif
 
             /* Use SA_NOCLDSTOP as a proxy for whether the sigaction machinery is
@@ -29462,7 +29462,7 @@
             #endif
 
             #include "system.h"
-            #include <fnmatch.h>
+            #include 
 
             #include "acl.h"
             #include "argmatch.h"
@@ -29498,9 +29498,9 @@
             #ifdef __MVS__
             #define MVS_LS "/bin/ls"
             #define MVS_LS_LEN (sizeof(MVS_ls)-1)
-            #include <unistd.h>
-            #include <sys/types.h>
-            #include <sys/wait.h>
+            #include 
+            #include 
+            #include 
 
             extern char** environ;
             static bool
@@ -29527,11 +29527,11 @@
             }
             #endif
 
-            /* Include <sys/capability.h> last to avoid a clash of <sys/types.h>
+            /* Include  last to avoid a clash of 
             include guards with some premature versions of libcap.
-            For more details, see <https://bugzilla.redhat.com/483548>.  */
+            For more details, see .  */
             #ifdef HAVE_CAP
-            # include <sys/capability.h>
+            # include 
             #endif
 
             #define PROGRAM_NAME (ls_mode == LS_LS ? "ls" \
@@ -31203,7 +31203,7 @@
                 if (pending_dirs)
                     dired_outbyte ('\n');
                 }
-            else if (n_files <= 1 && pending_dirs && pending_dirs->next == 0)
+            else if (n_files next == 0)
                 print_dir_name = false;
 
             while (pending_dirs)
@@ -32043,7 +32043,7 @@
                     break;
 
                     case ST_OCTAL:      /* Octal sequence */
-                    if (*p < '0' || *p > '7')
+                    if (*p  '7')
                         {
                         *(q++) = num;
                         ++count;
@@ -32306,7 +32306,7 @@
 
                     for (e2 = e1->next; e2 != nullptr; e2 = e2->next)
                         {
-                        if (e2->ext.len < SIZE_MAX && e1->ext.len == e2->ext.len)
+                        if (e2->ext.len ext.len == e2->ext.len)
                             {
                             if (memcmp (e1->ext.string, e2->ext.string, e1->ext.len) == 0)
                                 e2->ext.len = SIZE_MAX; /* Ignore */
@@ -34011,7 +34011,7 @@
                             case '+': case ',': case '-': case '.': case '/':
                             case '0': case '1': case '2': case '3': case '4':
                             case '5': case '6': case '7': case '8': case '9':
-                            case ':': case ';': case '<': case '=': case '>':
+                            case ':': case ';': case '':
                             case '?':
                             case 'A': case 'B': case 'C': case 'D': case 'E':
                             case 'F': case 'G': case 'H': case 'I': case 'J':
@@ -34443,7 +34443,7 @@
                         type = C_CAP;
                     else if ((mode & S_IXUGO) != 0 && is_colored (C_EXEC))
                         type = C_EXEC;
-                    else if ((1 < f->stat.st_nlink) && is_colored (C_MULTIHARDLINK))
+                    else if ((1 stat.st_nlink) && is_colored (C_MULTIHARDLINK))
                         type = C_MULTIHARDLINK;
                     }
                 else if (S_ISDIR (mode))
@@ -35058,7 +35058,7 @@
                 fputs (_("\
             \n\
             The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.\n\
-            FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,\n\
+            FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1FORMAT2,\n\
             then FORMAT1 applies to non-recent files and FORMAT2 to recent files.\n\
             TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.\n\
             Also the TIME_STYLE environment variable sets the default style to use.\n\
@@ -35099,9 +35099,9 @@
             +#ifdef __MVS__
             +#define MVS_LS "/bin/ls"
             +#define MVS_LS_LEN (sizeof(MVS_ls)-1)
-            +#include <unistd.h>
-            +#include <sys/types.h>
-            +#include <sys/wait.h>
+            +#include 
+            +#include 
+            +#include 
             +
             +extern char** environ;
             +static bool
@@ -35128,9 +35128,9 @@
             +}
             +#endif
             +
-            /* Include <sys/capability.h> last to avoid a clash of <sys/types.h>
+            /* Include  last to avoid a clash of 
                 include guards with some premature versions of libcap.
-                For more details, see <https://bugzilla.redhat.com/483548>.  */
+                For more details, see .  */
             @@ -1926,7 +1958,7 @@ decode_switches (int argc, char **argv)
                 {
                 int oi = -1;
@@ -35194,17 +35194,17 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Written by Jim Meyering.  */
 
-            #include <config.h>
+            #include 
 
-            #include <ctype.h>
-            #include <float.h>
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
             #include "system.h"
             #include "argmatch.h"
             #include "assure.h"
@@ -37245,17 +37245,17 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Written by Jim Meyering.  */
 
-            #include <config.h>
+            #include 
 
-            #include <ctype.h>
-            #include <float.h>
-            #include <stdio.h>
-            #include <getopt.h>
-            #include <sys/types.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
             #include "system.h"
             #include "argmatch.h"
             #include "assure.h"
@@ -39320,7 +39320,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
 
             /* timeout - Start a command, and kill it if the specified timeout expires
@@ -39352,15 +39352,15 @@
 
             Written by Pádraig Brady.  */
 
-            #include <config.h>
-            #include <getopt.h>
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <signal.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
             #if HAVE_PRCTL
-            # include <sys/prctl.h>
+            # include 
             #endif
-            #include <sys/wait.h>
+            #include 
 
             #include "system.h"
             #include "cl-strtod.h"
@@ -39370,9 +39370,9 @@
             #include "quote.h"
 
             #if HAVE_SETRLIMIT
-            /* FreeBSD 5.0 at least needs <sys/types.h> and <sys/time.h> included
-            before <sys/resource.h>.  Currently "system.h" includes <sys/time.h>.  */
-            # include <sys/resource.h>
+            /* FreeBSD 5.0 at least needs  and  included
+            before .  Currently "system.h" includes .  */
+            # include 
             #endif
 
             /* NonStop circa 2011 lacks both SA_RESTART and siginterrupt.  */
@@ -39953,7 +39953,7 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
 
             /* timeout - Start a command, and kill it if the specified timeout expires
@@ -39985,15 +39985,15 @@
 
             Written by Pádraig Brady.  */
 
-            #include <config.h>
-            #include <getopt.h>
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <signal.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
             #if HAVE_PRCTL
-            # include <sys/prctl.h>
+            # include 
             #endif
-            #include <sys/wait.h>
+            #include 
 
             #include "system.h"
             #include "cl-strtod.h"
@@ -40003,9 +40003,9 @@
             #include "quote.h"
 
             #if HAVE_SETRLIMIT
-            /* FreeBSD 5.0 at least needs <sys/types.h> and <sys/time.h> included
-            before <sys/resource.h>.  Currently "system.h" includes <sys/time.h>.  */
-            # include <sys/resource.h>
+            /* FreeBSD 5.0 at least needs  and  included
+            before .  Currently "system.h" includes .  */
+            # include 
             #endif
 
             /* NonStop circa 2011 lacks both SA_RESTART and siginterrupt.  */
@@ -40620,14 +40620,14 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            #include <config.h>
+            #include 
 
             /* Specification.  */
-            #include <stdlib.h>
+            #include 
 
-            #include <errno.h>
+            #include 
 
             int
             posix_memalign (void **memptr, size_t alignment, size_t size)
@@ -40665,14 +40665,14 @@
             GNU Lesser General Public License for more details.
 
             You should have received a copy of the GNU Lesser General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
-            #include <config.h>
+            #include 
 
             /* Specification.  */
-            #include <stdlib.h>
+            #include 
 
-            #include <errno.h>
+            #include 
 
             int
             posix_memalign (void **memptr, size_t alignment, size_t size)
@@ -40737,17 +40737,17 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Created by hacking who.c by Kaveh Ghazi ghazi@caip.rutgers.edu */
 
-            #include <config.h>
-            #include <ctype.h>
-            #include <getopt.h>
-            #include <pwd.h>
-            #include <stdio.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
-            #include <sys/types.h>
+            #include 
             #include "system.h"
 
             #include "canon-host.h"
@@ -41380,17 +41380,17 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+            along with this program.  If not, see .  */
 
             /* Created by hacking who.c by Kaveh Ghazi ghazi@caip.rutgers.edu */
 
-            #include <config.h>
-            #include <ctype.h>
-            #include <getopt.h>
-            #include <pwd.h>
-            #include <stdio.h>
+            #include 
+            #include 
+            #include 
+            #include 
+            #include 
 
-            #include <sys/types.h>
+            #include 
             #include "system.h"
 
             #include "canon-host.h"
@@ -42069,11 +42069,11 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            along with this program.  If not, see .
 
             Written by Michael Meskes.  */
 
-            #include <config.h>
+            #include 
 
             /* Keep this conditional in sync with the similar conditional in
             ../m4/stat-prog.m4.  */
@@ -42085,32 +42085,32 @@
             # define USE_STATVFS 0
             #endif
 
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <pwd.h>
-            #include <grp.h>
+            #include 
+            #include 
+            #include 
+            #include 
             #if USE_STATVFS
-            # include <sys/statvfs.h>
+            # include 
             #elif HAVE_SYS_VFS_H
-            # include <sys/vfs.h>
+            # include 
             #elif HAVE_SYS_MOUNT_H && HAVE_SYS_PARAM_H
             /* NOTE: freebsd5.0 needs sys/param.h and sys/mount.h for statfs.
             It does have statvfs.h, but shouldn't use it, since it doesn't
             HAVE_STRUCT_STATVFS_F_BASETYPE.  So find a clean way to fix it.  */
             /* NetBSD 1.5.2 needs these, for the declaration of struct statfs. */
-            # include <sys/param.h>
-            # include <sys/mount.h>
+            # include 
+            # include 
             # if HAVE_NFS_NFS_CLNT_H && HAVE_NFS_VFS_H
             /* Ultrix 4.4 needs these for the declaration of struct statfs.  */
-            #  include <netinet/in.h>
-            #  include <nfs/nfs_clnt.h>
-            #  include <nfs/vfs.h>
+            #  include 
+            #  include 
+            #  include 
             # endif
             #elif HAVE_OS_H /* BeOS */
-            # include <fs_info.h>
+            # include 
             #endif
-            #include <selinux/selinux.h>
-            #include <getopt.h>
+            #include 
+            #include 
 
             #include "system.h"
 
@@ -42220,8 +42220,8 @@
             #endif
 
             #if HAVE_GETATTRAT
-            # include <attr.h>
-            # include <sys/nvpair.h>
+            # include 
+            # include 
             #endif
 
             /* FIXME: these are used by printf.c, too */
@@ -44100,11 +44100,11 @@
             GNU General Public License for more details.
 
             You should have received a copy of the GNU General Public License
-            along with this program.  If not, see <https://www.gnu.org/licenses/>.
+            along with this program.  If not, see .
 
             Written by Michael Meskes.  */
 
-            #include <config.h>
+            #include 
 
             /* Keep this conditional in sync with the similar conditional in
             ../m4/stat-prog.m4.  */
@@ -44116,32 +44116,32 @@
             # define USE_STATVFS 0
             #endif
 
-            #include <stdio.h>
-            #include <sys/types.h>
-            #include <pwd.h>
-            #include <grp.h>
+            #include 
+            #include 
+            #include 
+            #include 
             #if USE_STATVFS
-            # include <sys/statvfs.h>
+            # include 
             #elif HAVE_SYS_VFS_H
-            # include <sys/vfs.h>
+            # include 
             #elif HAVE_SYS_MOUNT_H && HAVE_SYS_PARAM_H
             /* NOTE: freebsd5.0 needs sys/param.h and sys/mount.h for statfs.
             It does have statvfs.h, but shouldn't use it, since it doesn't
             HAVE_STRUCT_STATVFS_F_BASETYPE.  So find a clean way to fix it.  */
             /* NetBSD 1.5.2 needs these, for the declaration of struct statfs. */
-            # include <sys/param.h>
-            # include <sys/mount.h>
+            # include 
+            # include 
             # if HAVE_NFS_NFS_CLNT_H && HAVE_NFS_VFS_H
             /* Ultrix 4.4 needs these for the declaration of struct statfs.  */
-            #  include <netinet/in.h>
-            #  include <nfs/nfs_clnt.h>
-            #  include <nfs/vfs.h>
+            #  include 
+            #  include 
+            #  include 
             # endif
             #elif HAVE_OS_H /* BeOS */
-            # include <fs_info.h>
+            # include 
             #endif
-            #include <selinux/selinux.h>
-            #include <getopt.h>
+            #include 
+            #include 
 
             #include "system.h"
 
@@ -44189,7 +44189,7 @@
             # endif
 
             #ifdef __MVS__
-            #include <sys/statfs.h>
+            #include 
             # define STATFS w_statfs
             #else
             # define STATFS statfs
@@ -44262,8 +44262,8 @@
             #endif
 
             #if HAVE_GETATTRAT
-            # include <attr.h>
-            # include <sys/nvpair.h>
+            # include 
+            # include 
             #endif
 
             /* FIXME: these are used by printf.c, too */
@@ -46112,7 +46112,7 @@
             -# define STATFS statfs
             +
             +#ifdef __MVS__
-            +#include <sys/statfs.h>
+            +#include 
             +# define STATFS w_statfs
             +#else
             + # define STATFS statfs
