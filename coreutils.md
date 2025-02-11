@@ -1,4 +1,4 @@
-```json
+```plaintext
    {
         "wrong_code":
         """
